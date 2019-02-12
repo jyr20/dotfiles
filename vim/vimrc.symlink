@@ -1,0 +1,230 @@
+" VIM CONFIGURATION
+
+
+" ######################################################
+" 	GENERAL
+" ######################################################
+
+"Define mapleader
+let mapleader = " "
+
+"Use mouse click
+set mouse=a
+
+"Edit timeouts so normal/insert mode changeover is quicker
+set timeoutlen=200
+set ttimeoutlen=200
+
+"Set indent width
+set shiftwidth=4
+set tabstop=4
+
+"Enable 16 colors
+set t_Co=16
+" colo solarized
+
+"Set GUI font
+set guifont=Meslo\ LG\ S\ for\ Powerline\ 11
+
+"~/.vim/colors
+set background=dark
+colorscheme solarized
+
+"enable syntax hl
+syntax enable
+
+"Highlight search results
+set incsearch hlsearch showmatch
+
+" Show relative line numbers
+set number 
+
+" Set autoindent
+set autoindent 
+
+" Show relative line numbers 
+set relativenumber         
+
+" Make saving/quitting commands case insensitive
+:command WQ wq
+:command Q q
+:command W w
+:command Wq wq
+nmap <leader>q :q<cr>
+
+"map up and down to half page scrolls
+nmap <Up> H2k
+nmap <Down> L2j
+
+"add transparency
+hi Normal guibg=NONE ctermbg=NONE
+
+" ALWAYS use RegEx search and replace
+:cnoremap %s/ %s/\v
+
+" Add folding
+set foldmethod=indent
+set foldlevelstart=99
+
+"Add wildmenu
+set wildmenu
+
+" ######################################################
+" 	ALL MODES
+" ######################################################
+
+"Disable arrow keys in ALL modes
+no <up> <Nop>
+no <down> <Nop>
+no <right> <Nop>
+no <left> <Nop>
+ino <up> <Nop>
+ino <down> <Nop>
+ino <right> <Nop>
+ino <left> <Nop>
+vno <up> <Nop>
+vno <down> <Nop>
+vno <right> <Nop>
+vno <left> <Nop>
+
+" ######################################################
+" 	NORMAL MODE
+" ######################################################
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+
+" System clipboard copy and paste
+vnoremap <C-c> "*y
+noremap <C-v> "*p
+nmap <leader>y "*y
+nmap <leader>p "*p
+nmap <leader>[ "0p
+
+"Map buffer number switching
+nmap <leader>1 :b!1<cr>
+nmap <leader>2 :b!2<cr>
+nmap <leader>3 :b!3<cr>
+nmap <leader>4 :b!4<cr>
+nmap <leader>5 :b!5<cr>
+nmap <leader>6 :b!6<cr>
+nmap <leader>7 :b!7<cr>
+nmap <leader>8 :b!8<cr>
+nmap <leader>9 :b!9<cr>
+nmap <leader>10 :b!10<cr>
+nmap <leader>d1 :bd1<cr>
+nmap <leader>d2 :bd2<cr>
+nmap <leader>d3 :bd3<cr>
+nmap <leader>d4 :bd4<cr>
+nmap <leader>d5 :bd5<cr>
+nmap <leader>d6 :bd6<cr>
+nmap <leader>d7 :bd7<cr>
+nmap <leader>d8 :bd8<cr>
+nmap <leader>d9 :bd9<cr>
+nmap <leader>d10 :bd10<cr>
+
+"Use arrow keys to move between buffers
+noremap <Right> :bn!<cr>
+noremap <Left> :bp!<cr>
+nnoremap <leader>d. :bd<cr>
+
+"NERDTree toggle
+nmap <leader>z :NERDTreeToggle<cr>
+
+" ALWAYS very magic searching for RegEx
+:nnoremap / /\v
+
+" Tab to open/close folds
+nnoremap <Tab> za
+
+" Avoid unintentional switches to Ex mode.
+nnoremap Q <nop>
+
+" ######################################################
+" 	PLUGINS
+" ######################################################
+
+""" STRAIGHT FROM NEOBUNDLE GITHUB"""
+
+ " Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
+
+ if has('vim_starting')
+   if &compatible
+     set nocompatible               " Be iMproved
+   endif
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+ NeoBundle 'bling/vim-airline' "provides cool status bar
+ NeoBundle 'vim-airline/vim-airline-themes'
+ NeoBundle 'scrooloose/syntastic' "syntax HL
+ NeoBundle 'tpope/vim-fugitive' "Git client
+ NeoBundle 'scrooloose/nerdtree' "File tree
+ NeoBundle 'edkolev/tmuxline.vim' "makes tmuxline like an airline
+ NeoBundle 'altercation/vim-colors-solarized' "solarized theme
+ NeoBundle 'hynek/vim-python-pep8-indent' "PEP8 indenter
+ NeoBundle 'flazz/vim-colorschemes' 
+ NeoBundle 'ervandew/supertab'
+ NeoBundle 'tpope/vim-surround'
+ NeoBundle 'terryma/vim-multiple-cursors'
+ NeoBundle 'jiangmiao/auto-pairs'
+ NeoBundle 'airblade/vim-gitgutter'
+ NeoBundle 'Tpope/vim-commentary'
+ NeoBundle 'nvie/vim-flake8'
+ NeoBundle 'kien/ctrlp.vim'
+ NeoBundle 'octol/vim-cpp-enhanced-highlight'
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+
+"""END OF NEOBUNDLE"""
+
+" ######################################################
+" 	PLUGIN SETTINGS
+" ######################################################
+
+"Use powerline fonts for fancy symbols
+let g:airline_powerline_fonts = 1
+
+"Make airline appear always
+set laststatus=2
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"remove default status bar
+set noshowmode
+
+"Needed for NERD commenter
+filetype plugin on
+
+"automatically load errors into location list
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1 "constantly refresh error search
+
+"CtrlP map buffer search
+nnoremap <C-l> :CtrlPBuffer<cr>
+
+"add GitGutter toggle
+nnoremap <C-g> :GitGutterToggle<cr>
+
