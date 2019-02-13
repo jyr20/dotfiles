@@ -45,22 +45,9 @@ set autoindent
 " Show relative line numbers 
 set relativenumber         
 
-" Make saving/quitting commands case insensitive
-:command WQ wq
-:command Q q
-:command W w
-:command Wq wq
-nmap <leader>q :q<cr>
-
-"map up and down to half page scrolls
-nmap <Up> H2k
-nmap <Down> L2j
-
 "add transparency
 hi Normal guibg=NONE ctermbg=NONE
 
-" ALWAYS use RegEx search and replace
-:cnoremap %s/ %s/\v
 
 " Add folding
 set foldmethod=indent
@@ -70,7 +57,7 @@ set foldlevelstart=99
 set wildmenu
 
 " ######################################################
-" 	ALL MODES
+" 	DISABLE ARROW KEYS
 " ######################################################
 
 "Disable arrow keys in ALL modes
@@ -88,12 +75,28 @@ vno <right> <Nop>
 vno <left> <Nop>
 
 " ######################################################
+" 	COMMAND MODE
+" ######################################################
+
+" Make saving/quitting commands case insensitive
+:command WQ wq
+:command Q q
+:command W w
+:command Wq wq
+
+" ALWAYS use RegEx search and replace
+:cnoremap %s/ %s/\v
+
+" ######################################################
 " 	NORMAL MODE
 " ######################################################
 
+"map up and down to half page scrolls
+nmap <Up> H2k
+nmap <Down> L2j
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-
 
 " System clipboard copy and paste
 vnoremap <C-c> "*y
@@ -131,15 +134,30 @@ nnoremap <leader>d. :bd<cr>
 
 "NERDTree toggle
 nmap <leader>z :NERDTreeToggle<cr>
+nmap <leader><Tab> :NERDTreeToggle<cr>
 
 " ALWAYS very magic searching for RegEx
-:nnoremap / /\v
+nnoremap / /\v
 
 " Tab to open/close folds
 nnoremap <Tab> za
 
 " Avoid unintentional switches to Ex mode.
 nnoremap Q <nop>
+
+" Quit
+nmap <leader>q :q<cr>
+
+"CtrlP map buffer search
+nnoremap <C-l> :CtrlPBuffer<cr>
+nnoremap <leader><space> :CtrlP<cr>
+
+"add GitGutter toggle
+nnoremap <C-g> :GitGutterToggle<cr>
+nnoremap <leader>g :GitGutterToggle<cr>
+
+" Quick access to help search
+nnoremap <leader>h :h 
 
 " ######################################################
 " 	PLUGINS
@@ -187,6 +205,8 @@ nnoremap Q <nop>
  NeoBundle 'nvie/vim-flake8'
  NeoBundle 'kien/ctrlp.vim'
  NeoBundle 'octol/vim-cpp-enhanced-highlight'
+ NeoBundle 'tpope/vim-repeat'
+ NeoBundle 'wincent/scalpel'
 
  call neobundle#end()
 
@@ -222,9 +242,4 @@ filetype plugin on
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1 "constantly refresh error search
 
-"CtrlP map buffer search
-nnoremap <C-l> :CtrlPBuffer<cr>
-
-"add GitGutter toggle
-nnoremap <C-g> :GitGutterToggle<cr>
 

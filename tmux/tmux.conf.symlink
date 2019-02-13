@@ -7,6 +7,9 @@ bind C-a send-prefix
 unbind r
 bind r source-file ~/.tmux.conf
 
+#Enable mous
+set -g mouse on
+
 #quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
