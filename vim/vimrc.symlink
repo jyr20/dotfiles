@@ -56,6 +56,10 @@ set foldlevelstart=99
 "Add wildmenu
 set wildmenu
 
+" Natural splitting
+set splitbelow
+set splitright
+
 " ######################################################
 " 	DISABLE ARROW KEYS
 " ######################################################
@@ -130,7 +134,7 @@ nmap <leader>d10 :bd10<cr>
 "Use arrow keys to move between buffers
 noremap <Right> :bn!<cr>
 noremap <Left> :bp!<cr>
-nnoremap <leader>d. :bd<cr>
+nnoremap <leader>w :bd<cr>
 
 "NERDTree toggle
 nmap <leader>z :NERDTreeToggle<cr>
@@ -158,6 +162,12 @@ nnoremap <leader>g :GitGutterToggle<cr>
 
 " Quick access to help search
 nnoremap <leader>h :h 
+
+" Quicker split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " ######################################################
 " 	PLUGINS
@@ -207,6 +217,10 @@ nnoremap <leader>h :h
  NeoBundle 'octol/vim-cpp-enhanced-highlight'
  NeoBundle 'tpope/vim-repeat'
  NeoBundle 'wincent/scalpel'
+ NeoBundle 'tpope/vim-rails'
+ NeoBundle 'msanders/snipmate.vim'
+ NeoBundle 'mattn/emmet-vim'
+ NeoBundle 'alvan/vim-closetag'
 
  call neobundle#end()
 
