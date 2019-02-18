@@ -169,6 +169,17 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Create ruby environment within html
+nnoremap <leader>r a<%%><Esc><left>i
+
+" ######################################################
+" 	INSERT MODE
+" ######################################################
+
+" Ruby tag in html
+imap <% %><Esc><left>i
+
+
 " ######################################################
 " 	PLUGINS
 " ######################################################
@@ -218,9 +229,11 @@ nnoremap <C-H> <C-W><C-H>
  NeoBundle 'tpope/vim-repeat'
  NeoBundle 'wincent/scalpel'
  NeoBundle 'tpope/vim-rails'
- NeoBundle 'msanders/snipmate.vim'
+ " NeoBundle 'msanders/snipmate.vim'
  NeoBundle 'mattn/emmet-vim'
  NeoBundle 'alvan/vim-closetag'
+ NeoBundle 'tpope/vim-endwise'
+ NeoBundle 'pangloss/vim-javascript'
 
  call neobundle#end()
 
@@ -260,3 +273,7 @@ let g:syntastic_check_on_open = 1 "constantly refresh error search
 " " These are the file extensions where this plugin is enabled.
 " "
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*html.erb,*.xml.erb'
+
+" " Redefine default key of snipMate
+" :let g:snips_trigger_key = '<C-.>'
+" :let g:snips_trigger_key_backwards = '<C-,>'
