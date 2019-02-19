@@ -137,6 +137,8 @@ unalias rm
 
 autoload zmv
 
+alias p3="python3"
+alias prs="python3 manage.py runserver"
 alias lah="ls -lah"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
