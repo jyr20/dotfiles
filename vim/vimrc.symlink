@@ -60,6 +60,13 @@ set wildmenu
 set splitbelow
 set splitright
 
+" understand python3 syntax
+let g:pymode_python = 'python3'
+let g:pymode_lint_checkers = ['pep8']
+
+" Toggle literal clipboard pasting
+set pastetoggle=<F2>
+
 " ######################################################
 " 	DISABLE ARROW KEYS
 " ######################################################
@@ -172,6 +179,9 @@ nnoremap <C-H> <C-W><C-H>
 " Create ruby environment within html
 nnoremap <leader>r a<%%><Esc><left>i
 
+" split line functionality
+:nnoremap K i<CR><Esc>
+
 " ######################################################
 " 	INSERT MODE
 " ######################################################
@@ -234,6 +244,7 @@ imap <% %><Esc><left>i
  NeoBundle 'alvan/vim-closetag'
  NeoBundle 'tpope/vim-endwise'
  NeoBundle 'pangloss/vim-javascript'
+ NeoBundle 'vim-python/python-syntax'
 
  call neobundle#end()
 
@@ -277,3 +288,13 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*html.erb,*.xml.erb'
 " " Redefine default key of snipMate
 " :let g:snips_trigger_key = '<C-.>'
 " :let g:snips_trigger_key_backwards = '<C-,>'
+
+" Surround settings for django
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string"
+
+" Maximal python highlighting
+let g:python_highlight_all = 1
