@@ -239,9 +239,7 @@ imap <% %><Esc><left>i
  NeoBundle 'tpope/vim-repeat'
  NeoBundle 'wincent/scalpel'
  NeoBundle 'tpope/vim-rails'
- " NeoBundle 'msanders/snipmate.vim'
  NeoBundle 'mattn/emmet-vim'
- NeoBundle 'alvan/vim-closetag'
  NeoBundle 'tpope/vim-endwise'
  NeoBundle 'pangloss/vim-javascript'
  NeoBundle 'vim-python/python-syntax'
@@ -260,6 +258,9 @@ imap <% %><Esc><left>i
 " ######################################################
 " 	PLUGIN SETTINGS
 " ######################################################
+
+"Make Emmet leader the comma
+let g:user_emmet_leader_key=','
 
 "Use powerline fonts for fancy symbols
 let g:airline_powerline_fonts = 1

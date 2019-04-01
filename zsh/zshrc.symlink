@@ -132,7 +132,12 @@ b2h() {
 
 b2h2() {
 	#scp a root file from code_setup to ROOT files
-	b2h "code_setup/outputroot/$1.root" "/home/joey/Documents/ROOT/files/."
+	b2h "code_setup/outputroot/$1.root" "/home/joey/Documents/ROOT/pythonstuff/."
+}
+
+b2h3() {
+	#scp a root file from code_setup to ROOT files
+	b2h "code_setup/outputroot/$1" "/home/joey/Documents/ROOT/pythonstuff/."
 }
 
 unalias rm
