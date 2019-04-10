@@ -67,6 +67,9 @@ let g:pymode_lint_checkers = ['pep8']
 " Toggle literal clipboard pasting
 set pastetoggle=<F2>
 
+" Vim autocomplete for CSS
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
 " ######################################################
 " 	DISABLE ARROW KEYS
 " ######################################################
@@ -243,6 +246,8 @@ imap <% %><Esc><left>i
  NeoBundle 'tpope/vim-endwise'
  NeoBundle 'pangloss/vim-javascript'
  NeoBundle 'vim-python/python-syntax'
+ NeoBundle 'severin-lemaignan/vim-minimap'
+ NeoBundle 'ap/vim-css-color'
 
  call neobundle#end()
 
@@ -258,6 +263,9 @@ imap <% %><Esc><left>i
 " ######################################################
 " 	PLUGIN SETTINGS
 " ######################################################
+
+" Minimap toggle
+let g:minimap_toggle='<leader>mm'
 
 "Make Emmet leader the comma
 let g:user_emmet_leader_key=','
