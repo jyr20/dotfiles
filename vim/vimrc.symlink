@@ -70,6 +70,11 @@ set pastetoggle=<F2>
 " Vim autocomplete for CSS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
+" EJS macros
+map <F6> = I<lt> <Esc>A %><Esc>^a%<Esc>kJi<CR><Esc>
+map <F7> = I<lt> <Esc>A %><Esc>^a%=<Esc>kJi<CR><Esc>
+map <F8> = I<lt> <Esc>A %><Esc>^a%-<Esc>kJi<CR><Esc>
+
 " ######################################################
 " 	DISABLE ARROW KEYS
 " ######################################################
@@ -248,6 +253,7 @@ imap <% %><Esc><left>i
  NeoBundle 'vim-python/python-syntax'
  NeoBundle 'severin-lemaignan/vim-minimap'
  NeoBundle 'ap/vim-css-color'
+ NeoBundle 'briancollins/vim-jst'
 
  call neobundle#end()
 
