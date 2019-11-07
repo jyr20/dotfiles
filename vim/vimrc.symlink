@@ -70,11 +70,6 @@ set pastetoggle=<F2>
 " Vim autocomplete for CSS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-" EJS macros
-map <F6> = I<lt> <Esc>A %><Esc>^a%<Esc>kJi<CR><Esc>
-map <F7> = I<lt> <Esc>A %><Esc>^a%=<Esc>kJi<CR><Esc>
-map <F8> = I<lt> <Esc>A %><Esc>^a%-<Esc>kJi<CR><Esc>
-
 " ######################################################
 " 	DISABLE ARROW KEYS
 " ######################################################
@@ -103,8 +98,8 @@ vno <left> <Nop>
 :command W w
 :command Wq wq
 
-" ALWAYS use RegEx search and replace
-:cnoremap %s/ %s/\v
+" Redefine ctrlp to only look in current and below
+:command CtrlP CtrlPCurWD
 
 " ######################################################
 " 	NORMAL MODE
@@ -118,8 +113,8 @@ nmap <Down> L2j
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " System clipboard copy and paste
-vnoremap <C-c> "*y
-noremap <C-v> "*p
+vnoremap <C-c> "+y
+noremap <C-v> "+p
 nmap <leader>y "*y
 nmap <leader>p "*p
 nmap <leader>[ "0p
@@ -169,7 +164,7 @@ nmap <leader>q :q<cr>
 
 "CtrlP map buffer search
 nnoremap <C-l> :CtrlPBuffer<cr>
-nnoremap <leader><space> :CtrlP<cr>
+nnoremap <leader><space> :CtrlPCurWD<cr>
 
 "add GitGutter toggle
 nnoremap <C-g> :GitGutterToggle<cr>
@@ -190,12 +185,17 @@ nnoremap <leader>r a<%%><Esc><left>i
 " split line functionality
 :nnoremap K i<CR><Esc>
 
+" EJS macros
+nmap <F6> = i<lt> <Esc>A %><Esc>^a%<Esc>
+nmap <F7> = i<lt> <Esc>A %><Esc>^a%=<Esc>
+nmap <F8> = i<lt> <Esc>A %><Esc>^a%-<Esc>
+
 " ######################################################
 " 	INSERT MODE
 " ######################################################
 
-" Ruby tag in html
-imap <% %><Esc><left>i
+" Ruby/EJS tag in html
+inoremap <lt>% %><Esc><left>i
 
 
 " ######################################################
@@ -254,6 +254,7 @@ imap <% %><Esc><left>i
  NeoBundle 'severin-lemaignan/vim-minimap'
  NeoBundle 'ap/vim-css-color'
  NeoBundle 'briancollins/vim-jst'
+ NeoBundle 'w0rp/ale'
 
  call neobundle#end()
 
@@ -284,6 +285,9 @@ set laststatus=2
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"Fix CTRLP max level constraint
+let g:ctrlp_max_files=0
 
 "remove default status bar
 set noshowmode
