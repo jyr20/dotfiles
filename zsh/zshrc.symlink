@@ -140,6 +140,11 @@ b2h3() {
 	b2h "code_setup/outputroot/$1" "/home/joey/Documents/ROOT/pythonstuff/."
 }
 
+h2sh() {
+	#scp from home to batch
+	scp -r "$1" "jreiness@login.phyip3.dur.ac.uk:/mt/home/jreiness/GEN/SHERPA-MC-2.2.8/$2"
+}
+
 unalias rm
 
 # stop terminal flow-control (i.e. when terminal freezes after ctrl-s)
